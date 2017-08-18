@@ -6,28 +6,29 @@
 #
 Name     : linecache2
 Version  : 1.0.0
-Release  : 16
-URL      : https://pypi.python.org/packages/source/l/linecache2/linecache2-1.0.0.tar.gz
-Source0  : https://pypi.python.org/packages/source/l/linecache2/linecache2-1.0.0.tar.gz
+Release  : 17
+URL      : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
+Source0  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source99 : https://pypi.python.org/packages/source/l/linecache2/linecache2-1.0.0.tar.gz.asc
 Summary  : Backports of the linecache module
 Group    : Development/Tools
 License  : Python-2.0
 Requires: linecache2-python
-BuildRequires : extras
-BuildRequires : extras-python
+BuildRequires : configparser-python
+BuildRequires : enum34-python
 BuildRequires : fixtures-python
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : python-dev
-BuildRequires : python-mimeparse-python
 BuildRequires : python3-dev
 BuildRequires : setuptools
-BuildRequires : unittest2-python
+BuildRequires : testtools
+BuildRequires : testtools-python
 
 %description
-A backport of linecache to older supported Pythons.
 >>> import linecache2 as linecache
+        
+        Profit.
 
 %package python
 Summary: python components for the linecache2 package.
@@ -41,8 +42,11 @@ python components for the linecache2 package.
 %setup -q -n linecache2-1.0.0
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1484552343
+export SOURCE_DATE_EPOCH=1503070446
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -50,16 +54,20 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test || :
+PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1484552343
+export SOURCE_DATE_EPOCH=1503070446
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
