@@ -6,7 +6,7 @@
 #
 Name     : linecache2
 Version  : 1.0.0
-Release  : 22
+Release  : 23
 URL      : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source0  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source99 : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz.asc
@@ -33,6 +33,7 @@ BuildRequires : testtools-python
 %package legacypython
 Summary: legacypython components for the linecache2 package.
 Group: Default
+Requires: python-core
 
 %description legacypython
 legacypython components for the linecache2 package.
@@ -51,6 +52,7 @@ python components for the linecache2 package.
 %package python3
 Summary: python3 components for the linecache2 package.
 Group: Default
+Requires: python3-core
 
 %description python3
 python3 components for the linecache2 package.
@@ -64,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506872694
+export SOURCE_DATE_EPOCH=1507156486
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -74,7 +76,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1506872694
+export SOURCE_DATE_EPOCH=1507156486
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
