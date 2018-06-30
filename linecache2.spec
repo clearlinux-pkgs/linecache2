@@ -6,7 +6,7 @@
 #
 Name     : linecache2
 Version  : 1.0.0
-Release  : 35
+Release  : 36
 URL      : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source0  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source99 : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz.asc
@@ -15,20 +15,12 @@ Group    : Development/Tools
 License  : Python-2.0
 Requires: linecache2-python3
 Requires: linecache2-python
-BuildRequires : fixtures-python
 BuildRequires : pbr
 BuildRequires : pbr-legacypython
 BuildRequires : pip
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : setuptools-legacypython
-BuildRequires : six
-BuildRequires : six-python
-BuildRequires : testtools
-BuildRequires : testtools-python
-BuildRequires : traceback2-python
-BuildRequires : unittest2-python
 
 %description
 >>> import linecache2 as linecache
@@ -70,7 +62,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528573632
+export SOURCE_DATE_EPOCH=1530327763
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -78,9 +70,9 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1528573632
+export SOURCE_DATE_EPOCH=1530327763
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
