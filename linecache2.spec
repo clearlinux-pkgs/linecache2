@@ -6,7 +6,7 @@
 #
 Name     : linecache2
 Version  : 1.0.0
-Release  : 38
+Release  : 39
 URL      : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source0  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source99 : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz.asc
