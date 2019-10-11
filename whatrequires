@@ -1,6 +1,6 @@
 # This file contains recursive sources that require this package
 amqp
-deprecated-funcsigs
+conda
 funcsigs
 kombu
 testrepository

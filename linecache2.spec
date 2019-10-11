@@ -6,10 +6,10 @@
 #
 Name     : linecache2
 Version  : 1.0.0
-Release  : 47
+Release  : 48
 URL      : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source0  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
-Source99 : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz.asc
+Source1 : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz.asc
 Summary  : Backports of the linecache module
 Group    : Development/Tools
 License  : Python-2.0
@@ -18,16 +18,15 @@ Requires: linecache2-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : fixtures-python
 BuildRequires : pbr
-BuildRequires : pbr-legacypython
-BuildRequires : setuptools-legacypython
 BuildRequires : testtools
 BuildRequires : testtools-python
 BuildRequires : unittest2
 BuildRequires : unittest2-python
 
 %description
-A backport of linecache to older supported Pythons.
 >>> import linecache2 as linecache
+        
+        Profit.
 
 %package python
 Summary: python components for the linecache2 package.
@@ -54,8 +53,13 @@ python3 components for the linecache2 package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554321792
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570822432
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
