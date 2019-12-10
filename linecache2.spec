@@ -6,10 +6,10 @@
 #
 Name     : linecache2
 Version  : 1.0.0
-Release  : 49
+Release  : 50
 URL      : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source0  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
-Source1 : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz.asc
+Source1  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz.asc
 Summary  : Backports of the linecache module
 Group    : Development/Tools
 License  : Python-2.0
@@ -48,13 +48,14 @@ python3 components for the linecache2 package.
 
 %prep
 %setup -q -n linecache2-1.0.0
+cd %{_builddir}/linecache2-1.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570822432
+export SOURCE_DATE_EPOCH=1576011602
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -67,7 +68,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
