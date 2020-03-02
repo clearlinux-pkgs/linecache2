@@ -6,7 +6,7 @@
 #
 Name     : linecache2
 Version  : 1.0.0
-Release  : 51
+Release  : 52
 URL      : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source0  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz
 Source1  : http://pypi.debian.net/linecache2/linecache2-1.0.0.tar.gz.asc
@@ -24,9 +24,11 @@ BuildRequires : unittest2
 BuildRequires : unittest2-python
 
 %description
->>> import linecache2 as linecache
-        
-        Profit.
+A backport of linecache to older supported Pythons.
+
+ >>> import linecache2 as linecache
+
+Profit.
 
 %package python
 Summary: python components for the linecache2 package.
@@ -41,6 +43,7 @@ python components for the linecache2 package.
 Summary: python3 components for the linecache2 package.
 Group: Default
 Requires: python3-core
+Provides: pypi(linecache2)
 
 %description python3
 python3 components for the linecache2 package.
@@ -55,7 +58,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576011602
+export SOURCE_DATE_EPOCH=1583170488
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "

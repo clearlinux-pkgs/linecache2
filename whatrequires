@@ -4,3 +4,4 @@ conda
 funcsigs
 kombu
 testrepository
+traceback2
