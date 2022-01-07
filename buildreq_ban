@@ -2,3 +2,4 @@
 # undesirable. One entry per line, no whitespace.
 unittest2-python
 unittest2
+pypi(unittest2)
